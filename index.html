@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sketchbook Style Page</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4/turn.min.js"></script>
+</head>
+<style>
+    /* 전체 페이지 설정 */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f7f3e9; /* 기본 배경 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 스케치북 전체 설정 */
+    .sketchbook {
+        width: 120vw;
+        height: 100vh;
+        border: 1px solid #d3cdb8;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        transition: transform 0.6s ease;
+    }
+
+    .sketchbook.turning {
+        transform: rotateX(-180deg);
+    }
+
+    .rings {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        top: -10px;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .ring {
+        width: 20px;
+        height: 20px;
+        background-color: #bfb8a6;
+        border-radius: 50%;
+    }
+    
+    .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        color: #333;
+    }
+
+    .icon {
+        width: 170px;
+        height: 170px;
+        position: absolute;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+    }
+
+    .icon:hover {
+        transform: scale(1.5);
+    }
+
+/* 가로형 랜덤 배치 - 중앙 로고와 겹치지 않도록 */
+.icon1 { top: 15%; left: 1%; }
+.icon2 { top: 15%; left: 20%; }
+.icon3 { top: 25%; left: 10%; }
+.icon4 { top: 55%; left: 15%; }
+.icon5 { top: 65%; left: 2%; }
+.icon6 { top: 10%; left: 35%; }
+.icon7 { top: 55%; left: 30%; }
+.icon8 { top: 10%; left: 70%; }
+.icon9 { top: 20%; left: 60%; }
+.icon10 { top: 60%; left: 73%; }
+.icon11 { top: 60%; left: 45%; }
+.icon12 { top: 50%; left: 5%; }
+.icon13 { top: 27%; left: 70%; }
+.icon14 { top: 70%; left: 85%; }
+.icon15 { top: 9%; left: 82%; }
+.icon16 { top: 40%; left: 25%; }
+.icon17 { top: 50%; left: 60%; }
+.icon18 { top: 25%; left: 87%; }
+.icon19 { top: 70%; left: 25%; }
+.icon20 { top: 10%; left: 50%; }
+
+
+
+
+    .title {
+        font-family: 'Dongle', sans-serif;
+        font-size: 2em;
+        font-weight: 500;
+        color: #000000;
+        position: absolute;
+        top: 5%;
+        left: 2%;
+    }
+
+    .subtitle {
+        font-family: 'Dongle', sans-serif;
+        font-size: 2em;
+        font-weight: 500;
+        color: #000000;
+        position: absolute;
+        top: 5%;
+        left: 90%;
+    }
+
+    .logo {
+        position: absolute;
+        width: 200px;
+        height: auto;
+    }
+
+    .sublogo {
+        position: absolute;
+        width: 150px;
+        height: auto;
+        z-index: 2;
+
+    }
+
+    .sublogo1 { top: 5%; left: 20%; }
+    .sublogo2 { top: 10%; left: 60%; }
+    .sublogo3 { top: 70%; left: 10%; }
+    .sublogo4 { top: 80%; left: 60%; }
+
+</style>
+</head>
+<body>
+    <!-- 스케치북 전체 틀 -->
+    <div class="sketchbook">
+        <div class="rings">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+
+        <div class="title">2024 서울시립대학교<br>시각디자인1,2과제전시회</div>
+        <div class="subtitle">몽땅시각</div>
+
+        
+        <img src="logo.png" alt="Logo" class="logo">
+        <img src="sublogo1.png" alt="sublogo1" class="sublogo sublogo1">
+        <img src="sublogo2.png" alt="sublogo2" class="sublogo sublogo2">
+        <img src="sublogo3.png" alt="sublogo3" class="sublogo sublogo3">
+        <img src="sublogo4.png" alt="sublogo4" class="sublogo sublogo4">
+
+
+
+        <div class="content">
+            <img src="icon1.png" alt="Icon 1" class="icon icon1" onclick="turnPage('page1.html')">
+            <img src="icon2.png" alt="Icon 2" class="icon icon2" onclick="turnPage('page2.html')">
+            <img src="icon3.png" alt="Icon 3" class="icon icon3" onclick="turnPage('page3.html')">
+            <img src="icon4.png" alt="Icon 4" class="icon icon4" onclick="turnPage('page4.html')">
+            <img src="icon5.png" alt="Icon 5" class="icon icon5" onclick="turnPage('page5.html')">
+            <img src="icon6.png" alt="Icon 6" class="icon icon6" onclick="turnPage('page6.html')">
+            <img src="icon7.png" alt="Icon 7" class="icon icon7" onclick="turnPage('page7.html')">
+            <img src="icon8.png" alt="Icon 8" class="icon icon8" onclick="turnPage('page8.html')">
+            <img src="icon9.png" alt="Icon 9" class="icon icon9" onclick="turnPage('page9.html')">
+            <img src="icon10.png" alt="Icon 10" class="icon icon10" onclick="turnPage('page10.html')">
+            <img src="icon11.png" alt="Icon 11" class="icon icon11" onclick="turnPage('page11.html')">
+            <img src="icon12.png" alt="Icon 12" class="icon icon12" onclick="turnPage('page12.html')">
+            <img src="icon13.png" alt="Icon 13" class="icon icon13" onclick="turnPage('page13.html')">
+            <img src="icon14.png" alt="Icon 14" class="icon icon14" onclick="turnPage('page14.html')">
+            <img src="icon15.png" alt="Icon 15" class="icon icon15" onclick="turnPage('page15.html')">
+            <img src="icon16.png" alt="Icon 16" class="icon icon16" onclick="turnPage('page16.html')">
+            <img src="icon17.png" alt="Icon 17" class="icon icon17" onclick="turnPage('page17.html')">
+            <img src="icon18.png" alt="Icon 18" class="icon icon18" onclick="turnPage('page18.html')">
+            <img src="icon19.png" alt="Icon 19" class="icon icon19" onclick="turnPage('page19.html')">
+            <img src="icon20.png" alt="Icon 20" class="icon icon20" onclick="turnPage('page20.html')">
+
+
+        </div>
+    </div>
+
+    
+    <script>
+        function turnPage(url) {
+            const sketchbook = document.querySelector('.sketchbook');
+            sketchbook.classList.add('turning');
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 600);
+        }
+    </script>
+</body>
+</html>

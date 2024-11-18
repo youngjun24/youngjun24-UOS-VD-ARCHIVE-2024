@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page 3</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+<!-- turn.js를 CDN으로 가져오기 (또는 직접 다운로드한 후 경로 변경 가능) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/4/turn.min.js"></script>
+</head>
+<style>
+    /* 전체 페이지 설정 */
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f7f3e9; /* 종이 색상 배경 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 스케치북 전체 설정 */
+    .sketchbook {
+        width: 120vw;
+        height: 100vh;
+        border: 1px solid #d3cdb8;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        transition: transform 0.6s ease; /* 페이지 넘김 애니메이션 */
+    }
+
+    .sketchbook.turning {
+    transform: rotateX(-180deg); /* 페이지 넘김 효과 */
+}
+
+    .rings {
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        top: -10px;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .ring {
+        width: 20px;
+        height: 20px;
+        background-color: #bfb8a6;
+        border-radius: 50%;
+    }
+    
+    .content {
+        text-align: center;
+        font-family: 'Dongle', sans-serif;
+        font-size: 2em;
+    }
+
+    .back {
+        position: absolute;
+        font-size: 1.5em;
+        font-family: 'Dongle', sans-serif;
+        top: 2%;
+        left: 2%;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="sketchbook">
+        <!-- 고정 링들 -->
+        <div class="rings">
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+            <div class="ring"></div>
+        </div>
+
+        <div class="content">
+            <h1>예시 이름 최영준</h1>
+            <p>작업 설명 ~</p>
+        </div>
+
+        <!-- 메인 페이지로 돌아가는 버튼 -->
+        <div class="back" onclick="turnPage('index.html')">
+            <h1>←</h1>
+        </div>
+    </div>
+    <script>
+        function turnPage(url) {
+            // 페이지 넘김 효과를 위해 turn.js의 페이지 넘김 애니메이션 설정
+            const sketchbook = document.querySelector('.sketchbook');
+            sketchbook.classList.add('turning'); // 애니메이션 효과를 위한 클래스 추가
+
+            setTimeout(() => {
+                window.location.href = url; // 애니메이션이 끝난 후 페이지 이동
+            }, 600); // 0.6초 후 페이지 이동
+        }
+    </script>
+</body>
+</html>
